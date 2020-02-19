@@ -160,7 +160,7 @@ local utils = import 'utils.libsonnet';
           {
             alert: 'AggregatedAPIDown',
             expr: |||
-              sum by(name, namespace)(sum_over_time(aggregator_unavailable_apiservice[5m])) > 0
+              sum by(name, namespace)(rate(aggregator_unavailable_apiservice[5m])) > 0
             ||| % $._config,
             'for': '5m',
             labels: {
